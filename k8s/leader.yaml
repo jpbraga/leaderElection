@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: leader
+spec: {}
+status: {}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,7 +15,7 @@ metadata:
     app: leader-deploy
   name: leader-deploy
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: leader
@@ -38,7 +46,13 @@ spec:
             secretKeyRef:
               name: aws-credentials
               key: AWS_SECRET_ACCESS_KEY
-        resources: {}
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "128m"
+          limits:
+            memory: "128Mi"
+            cpu: "256m"
 status: {}
 ---
 apiVersion: v1
