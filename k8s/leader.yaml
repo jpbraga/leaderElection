@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  namespace: leader
+  labels:
+    app: leader-deploy
+  name: leader-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: leader
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: leader
+    spec:
+      containers:
+      - image: jpbraga/leader:latest
+        name: leader
+        env:
+        - name: LOCK_TABLE_NAME
+          value: leader-election-lock-table
+        - name: PARTITION_KEY
+          value: id
+        - name: REGION
+          value: us-east-1
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: AWS_SECRET_ACCESS_KEY
+        resources: {}
+status: {}
+---
+apiVersion: v1
+data:
+  AWS_ACCESS_KEY_ID: QUtJQVdWUDRTTlY3TDY3SFJZT1Y=
+  AWS_SECRET_ACCESS_KEY: cW85MUgyNFJ2NGIxeGNiRGtYWlJaZTR3bkdTR2xzVHVZOW9KT1Z4Sw==
+kind: Secret
+metadata:
+  namespace: leader
+  creationTimestamp: null
+  name: aws-credentials
+
