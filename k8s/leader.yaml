@@ -55,13 +55,13 @@ spec:
             cpu: "256m"
 status: {}
 ---
+# kubectl create secret generic aws-credentials -n leader --from-literal AWS_ACCESS_KEY_ID=123456 --from-literal AWS_SECRET_ACCESS_KEY=abcdefgh --dry-run=client -o yaml
 apiVersion: v1
 data:
-  AWS_ACCESS_KEY_ID: QUtJQVdWUDRTTlY3TDY3SFJZT1Y=
-  AWS_SECRET_ACCESS_KEY: cW85MUgyNFJ2NGIxeGNiRGtYWlJaZTR3bkdTR2xzVHVZOW9KT1Z4Sw==
+  AWS_ACCESS_KEY_ID: QUtJQVdWUDRTTlY3TDY3SFJZT1Y= #Replace with your credentials on base64
+  AWS_SECRET_ACCESS_KEY: cW85MUgyNFJ2NGIxeGNiRGtYWlJaZTR3bkdTR2xzVHVZOW9KT1Z4Sw== #Replace with your credentials on base64
 kind: Secret
 metadata:
   namespace: leader
-  creationTimestamp: null
   name: aws-credentials
 
