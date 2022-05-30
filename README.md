@@ -29,3 +29,4 @@ The following permissions are required:
 
 ## Credits
 https://www.npmjs.com/package/dynamodb-lock-client
+https://aws.amazon.com/pt/builders-library/leader-election-in-distributed-systems/
