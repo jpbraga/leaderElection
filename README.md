@@ -10,11 +10,13 @@ Across multiple instances only one of them can gain an retain the leadership. On
 **Note that the instances can be placed anywhere as long as they can reach the AWS DynamoDB database.**
 
 ### Required environment variables
-- REGION: AWS DynamoDB region
-- LOCK_TABLE_NAME: AWS DynamoDB table name
-- PARTITION_KEY: AWS DynamoDB partitionKey name
-- AWS_ACCESS_KEY_ID: AWS service account id
-- AWS_SECRET_ACCESS_KEY: AWS service account secret
+| Name                  | Description                    | Example      |
+|-----------------------|--------------------------------|--------------|
+| REGION                | AWS DynamoDB region            | us-east-1    |
+| LOCK_TABLE_NAME       | AWS DynamoDB table name        | LEADER_TABLE |
+| PARTITION_KEY         | AWS DynamoDB partitionKey name | id           |
+| AWS_ACCESS_KEY_ID     | AWS service account id         | N/A          |
+| AWS_SECRET_ACCESS_KEY | AWS service account secret     | N/A          |
 
 ### Permissions
 The following permissions are required:
