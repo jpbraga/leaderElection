@@ -5,5 +5,4 @@ USER node
 COPY --chown=node:node . ./
 RUN npm install --only=prod && npm cache clean --force
 COPY --chown=node:node . .
-EXPOSE 3000
 CMD [ "node","index.js" ]
